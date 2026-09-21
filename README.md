@@ -75,7 +75,7 @@ laboratorio-estatistico/
 
 ### 1. Clonar o Repositório
 ```bash
-git clone https://github.com/Zackzinzz07/laboratorio-estatistico..git
+git clone https://github.com/Zackzinzz07/laboratorio-estatistico.git
 cd laboratorio-estatistico
 ```
 

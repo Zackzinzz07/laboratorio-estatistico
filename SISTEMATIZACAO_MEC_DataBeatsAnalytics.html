@@ -25,8 +25,8 @@
     background:#fff;
   }
 
-  .page{ max-width:180mm; margin:0 auto; padding:10mm 0; }
-  .page + .page{ page-break-before:always; }
+  .page{ max-width:180mm; margin:0 auto; padding:6mm 0; }
+  .page + .page{ page-break-before:always; padding-top:0; }
 
   h1{
     font-size:17pt; margin:0 0 2mm; color:var(--accent);
@@ -76,8 +76,16 @@
 
   @media print{
     .noprint{ display:none !important; }
-    body{ font-size:10pt; }
   }
+
+  /* A página 2 (resumo executivo) precisa caber em UMA folha — compacta o texto */
+  .page.compact{ font-size:9.3pt; line-height:1.38; }
+  .page.compact h2{ font-size:11pt; margin:4mm 0 1.8mm; }
+  .page.compact h3{ font-size:9.8pt; }
+  .page.compact p{ margin:0 0 1.8mm; }
+  .page.compact li{ margin-bottom:.8mm; }
+  .page.compact .finding{ padding:2.2mm 3mm; margin:0 0 2.2mm; }
+  .page.compact .foot{ margin-top:3.5mm; }
 
   .noprint{
     position:fixed; top:12px; right:12px; z-index:99;
@@ -121,7 +129,7 @@
   <h2>3. Link da solução</h2>
   <p>Repositório público com código-fonte, README.md, RELATORIO.md e testes automatizados:</p>
   <p class="link">
-    https://github.com/Zackzinzz07/laboratorio-estatistico.
+    https://github.com/Zackzinzz07/laboratorio-estatistico
   </p>
 
   <h2>4. Link do vídeo de demonstração</h2>
@@ -138,44 +146,40 @@
 </section>
 
 <!-- ===================== PÁGINA 2 ===================== -->
-<section class="page">
+<section class="page compact">
 
   <h1 style="font-size:14pt;">5. Resumo Executivo</h1>
 
   <h2>Dataset escolhido</h2>
   <p>
-    O <strong>Spotify Songs Dataset</strong> reúne <span class="num">32.833</span> faixas musicais com
-    atributos sonoros medidos pela própria API do Spotify. A escolha se justifica por três motivos:
-    o volume supera em mais de 32 vezes o mínimo de 1.000 registros exigido, garantindo validade
-    assintótica às simulações da Lei dos Grandes Números e do Teorema Central do Limite; o conjunto
-    oferece <span class="num">9</span> variáveis numéricas (<em>danceability, energy, loudness, valence,
-    tempo, duration_s, track_popularity, acousticness, speechiness</em>) e <span class="num">3</span>
-    categóricas (<em>playlist_genre</em> com 6 classes, <em>playlist_subgenre</em> com 24 e
-    <em>mode</em>); e apresenta formas distribucionais variadas — de aproximadamente normais
-    (<em>tempo</em>) a fortemente assimétricas com cauda longa (<em>duration_s</em>) —, o que permite
-    exercitar toda a teoria de probabilidade e regressão em dados reais.
+    O <strong>Spotify Songs Dataset</strong> reúne <span class="num">32.833</span> faixas com atributos
+    sonoros medidos pela API do Spotify — 32 vezes o mínimo de 1.000 registros exigido, o que garante
+    validade assintótica às simulações da LGN e do TCL. São <span class="num">9</span> variáveis numéricas
+    (<em>danceability, energy, loudness, valence, tempo, duration_s, track_popularity, acousticness,
+    speechiness</em>) e <span class="num">3</span> categóricas (<em>playlist_genre</em>, 6 classes;
+    <em>playlist_subgenre</em>, 24; <em>mode</em>). As formas distribucionais são variadas — de
+    aproximadamente normais (<em>tempo</em>) a fortemente assimétricas com cauda longa
+    (<em>duration_s</em>) —, permitindo exercitar probabilidade e regressão em dados reais.
   </p>
 
   <h2>Módulos implementados</h2>
   <ul>
     <li><strong>Módulo 0 — Dados reais:</strong> carga, dicionário de variáveis e metadados das 32.833 faixas.</li>
-    <li><strong>Módulo 1 — Núcleo estatístico próprio:</strong> <code>minhastats.py</code> com 17 funções
-        implementadas do zero usando apenas <code>math</code> e tipos nativos — média, mediana, moda,
-        amplitude, variância e desvio padrão (amostral e populacional), percentis, quartis, coeficiente
-        de variação, covariância, correlação de Pearson, regressão por mínimos quadrados, outliers por
-        IQR, tabela de frequências por Sturges e assimetria de Pearson. Validado por
+    <li><strong>Módulo 1 — Núcleo próprio:</strong> <code>minhastats.py</code> com 17 funções escritas do
+        zero usando só <code>math</code> e tipos nativos — média, mediana, moda, amplitude, variância e
+        desvio padrão (amostral e populacional), percentis, quartis, CV, covariância, Pearson, mínimos
+        quadrados, outliers por IQR, frequências por Sturges e assimetria. Validado por
         <span class="num">27</span> testes em pytest contra NumPy, SciPy e <code>statistics</code>
-        (tolerância <span class="num">rtol = 1e-7</span>, <span class="num">atol = 1e-9</span>).</li>
-    <li><strong>Módulo 2 — Descritiva interativa:</strong> tabela de frequências por classes, medidas de
-        centro e dispersão, histograma, boxplot, detecção de outliers pela regra de Tukey (1,5·IQR) e
-        interpretação textual automática de assimetria.</li>
-    <li><strong>Módulo 3 — Monte Carlo:</strong> Lei dos Grandes Números (até 10.000 ensaios, com
-        trajetórias simultâneas) e Teorema Central do Limite sobre <em>duration_s</em>, com controle
-        do número de repetições e do tamanho da amostra.</li>
-    <li><strong>Módulo 4 — Distribuições teóricas:</strong> sobreposição de curvas Normal, Exponencial e
-        Uniforme com parâmetros estimados dos dados, mais gráfico Q-Q para discussão da aderência.</li>
-    <li><strong>Módulo 5 — Correlação e regressão:</strong> dispersão, reta OLS calculada pelo núcleo
-        próprio, equação, R², erro padrão da estimativa, predição interativa e alerta sobre causalidade.</li>
+        (<span class="num">rtol = 1e-7</span>, <span class="num">atol = 1e-9</span>).</li>
+    <li><strong>Módulo 2 — Descritiva interativa:</strong> tabela de frequências, medidas de centro e
+        dispersão, histograma, boxplot, outliers pela regra de Tukey (1,5·IQR) e interpretação textual
+        automática de assimetria.</li>
+    <li><strong>Módulo 3 — Monte Carlo:</strong> Lei dos Grandes Números (até 10.000 ensaios) e Teorema
+        Central do Limite sobre <em>duration_s</em>, com controle de repetições e tamanho da amostra.</li>
+    <li><strong>Módulo 4 — Distribuições teóricas:</strong> curvas Normal, Exponencial e Uniforme com
+        parâmetros estimados dos dados, mais gráfico Q-Q para discussão da aderência.</li>
+    <li><strong>Módulo 5 — Correlação e regressão:</strong> dispersão, reta OLS do núcleo próprio,
+        equação, R², erro padrão, predição interativa e alerta sobre causalidade.</li>
     <li><strong>Módulo 6 — Descobertas:</strong> as três sínteses apresentadas a seguir.</li>
   </ul>
 
@@ -184,39 +188,33 @@
   <div class="finding">
     <h3>1. A "Loudness War" é mensurável nos dados</h3>
     <p>
-      Volume (<em>loudness</em>) e energia percebida (<em>energy</em>) apresentam correlação de Pearson
-      de <span class="num">r = +0,6774</span> (<span class="num">R² = 45,88%</span>). A mediana de volume
-      é de <span class="num">−6,17 dB</span> com assimetria negativa (<span class="num">As = −0,31</span>):
-      mais de 75% das faixas são masterizadas num intervalo comprimido entre −9 dB e −4 dB. O padrão é
-      consistente com a prática da indústria fonográfica de comprimir dinamicamente as mixagens para
-      transmitir sensação imediata de impacto. <em>Limite:</em> associação, não causalidade — o gênero
-      musical atua como possível variável de confundimento.
+      <em>Loudness</em> e <em>energy</em> correlacionam-se em <span class="num">r = +0,6774</span>
+      (<span class="num">R² = 45,88%</span>). A mediana de volume é <span class="num">−6,17 dB</span> com
+      assimetria negativa (<span class="num">As = −0,31</span>): mais de 75% das faixas ficam comprimidas
+      entre −9 dB e −4 dB, padrão consistente com a compressão dinâmica praticada pela indústria.
+      <em>Limite:</em> associação, não causalidade — o gênero é confundidor plausível.
     </p>
   </div>
 
   <div class="finding">
-    <h3>2. A duração das músicas convergiu para a janela do streaming</h3>
+    <h3>2. A duração convergiu para a janela do streaming</h3>
     <p>
-      A média de duração é de <span class="num">225,8 s</span> contra mediana de
-      <span class="num">216,0 s</span>, com assimetria positiva (<span class="num">As = +0,49</span>).
-      A regra do IQR identificou <span class="num">1.637</span> faixas atípicas
-      (<span class="num">4,99%</span>), <strong>todas</strong> na cauda superior (acima de 325,1 s) —
-      nenhuma na cauda inferior. O acervo está concentrado entre 3 e 3,5 minutos, faixa compatível com
-      o modelo de remuneração por <em>stream</em> monetizável a partir de 30 segundos; os outliers são
-      remixes estendidos e rock progressivo.
+      Média de <span class="num">225,8 s</span> contra mediana de <span class="num">216,0 s</span>
+      (<span class="num">As = +0,49</span>). O IQR apontou <span class="num">1.637</span> outliers
+      (<span class="num">4,99%</span>), <strong>todos</strong> na cauda superior (&gt; 325,1 s) e nenhum
+      na inferior. O acervo se concentra entre 3 e 3,5 min, compatível com o <em>stream</em> monetizável
+      a partir de 30 s; os atípicos são remixes estendidos e rock progressivo.
     </p>
   </div>
 
   <div class="finding">
     <h3>3. A popularidade esconde uma bimodalidade ("catálogo morto")</h3>
     <p>
-      <span class="num">2.703</span> músicas (<span class="num">8,23%</span> da base) têm popularidade
-      exatamente igual a zero, formando um pico isolado à esquerda do histograma. Ao remover esse grupo,
-      a distribuição das faixas ativas se torna praticamente unimodal e simétrica (média
-      <span class="num">46,2</span>, mediana <span class="num">47,0</span>). Isso evidencia a estrutura
-      de cauda longa das plataformas digitais e mostra que aplicar uma regressão linear ingênua sobre a
-      popularidade contamina os resíduos — o caso pediria um modelo do tipo <em>hurdle</em> ou
-      <em>zero-inflated</em>.
+      <span class="num">2.703</span> faixas (<span class="num">8,23%</span>) têm popularidade exatamente
+      zero, formando um pico isolado à esquerda. Removendo esse grupo, a distribuição vira praticamente
+      unimodal e simétrica (média <span class="num">46,2</span>, mediana <span class="num">47,0</span>).
+      É a cauda longa das plataformas: uma regressão linear ingênua sobre a popularidade contamina os
+      resíduos — o caso pede um modelo <em>hurdle</em> ou <em>zero-inflated</em>.
     </p>
   </div>
 
