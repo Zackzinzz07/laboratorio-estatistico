@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Sistematização MEC — DataBeats Analytics</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+
+  :root{
+    --ink:#16202b;
+    --muted:#5c6b7a;
+    --rule:#c9d4e0;
+    --accent:#123c69;
+    --soft:#f2f6fa;
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    font-family:"Segoe UI", Calibri, Arial, sans-serif;
+    font-size:10.5pt;
+    line-height:1.5;
+    color:var(--ink);
+    background:#fff;
+  }
+
+  .page{ max-width:180mm; margin:0 auto; padding:10mm 0; }
+  .page + .page{ page-break-before:always; }
+
+  h1{
+    font-size:17pt; margin:0 0 2mm; color:var(--accent);
+    line-height:1.25; letter-spacing:-.2px;
+  }
+  h2{
+    font-size:12pt; margin:7mm 0 2.5mm; color:var(--accent);
+    padding-bottom:1.5mm; border-bottom:1.5px solid var(--rule);
+  }
+  h3{ font-size:10.5pt; margin:4mm 0 1.5mm; }
+  p{ margin:0 0 2.5mm; text-align:justify; }
+
+  .sub{ color:var(--muted); font-size:10pt; margin:0 0 6mm; }
+
+  .hdr{ border-bottom:2.5px solid var(--accent); padding-bottom:4mm; margin-bottom:5mm; }
+
+  table{ width:100%; border-collapse:collapse; margin:2mm 0 4mm; font-size:10pt; }
+  th, td{ border:1px solid var(--rule); padding:2mm 2.5mm; text-align:left; vertical-align:top; }
+  th{ background:var(--soft); font-weight:600; width:38mm; color:var(--accent); }
+
+  .link{ color:#0f5aa6; word-break:break-all; font-size:9.5pt; }
+
+  ul{ margin:0 0 3mm; padding-left:5mm; }
+  li{ margin-bottom:1.2mm; }
+
+  .finding{
+    border-left:3px solid var(--accent);
+    background:var(--soft);
+    padding:3mm 4mm;
+    margin:0 0 3.5mm;
+    page-break-inside:avoid;
+  }
+  .finding h3{ margin-top:0; color:var(--accent); }
+  .num{ font-variant-numeric:tabular-nums; font-weight:600; }
+
+  .foot{
+    margin-top:6mm; padding-top:2.5mm;
+    border-top:1px solid var(--rule);
+    font-size:9pt; color:var(--muted);
+  }
+
+  .gap{
+    border:1.5px dashed #b8432e; background:#fdf3f1;
+    padding:2.5mm 3.5mm; margin:0 0 4mm;
+    font-size:9.5pt; color:#8e3524;
+  }
+
+  @media print{
+    .noprint{ display:none !important; }
+    body{ font-size:10pt; }
+  }
+
+  .noprint{
+    position:fixed; top:12px; right:12px; z-index:99;
+    background:var(--accent); color:#fff; border:0; border-radius:8px;
+    padding:10px 16px; font:600 13px "Segoe UI",sans-serif; cursor:pointer;
+    box-shadow:0 6px 18px rgba(18,60,105,.3);
+  }
+</style>
+</head>
+<body>
+
+<button class="noprint" onclick="window.print()">Salvar como PDF (Ctrl+P)</button>
+
+<!-- ===================== PÁGINA 1 ===================== -->
+<section class="page">
+
+  <div class="hdr">
+    <h1>Sistematização — Laboratório Estatístico Interativo</h1>
+    <p class="sub">
+      Matemática e Estatística para Computação · Prof. Romes Heriberto<br>
+      Análise e Desenvolvimento de Sistemas — EAD, Campus Virtual · 2º semestre de 2026
+    </p>
+  </div>
+
+  <h2>1. Identificação</h2>
+  <table>
+    <tr><th>Nome do grupo</th><td>DataBeats Analytics</td></tr>
+    <tr><th>Modalidade</th><td>Entrega individual</td></tr>
+    <tr><th>Componente</th><td><strong>Isac Salatiel</strong> — Matrícula: <span class="num">72650219</span></td></tr>
+  </table>
+
+  <h2>2. Link dos dados crus</h2>
+  <p>
+    <strong>Spotify Songs Dataset</strong> — TidyTuesday / Kaggle, coletado via API oficial
+    do Spotify (pacote <em>spotifyr</em>). 32.833 registros e 23 variáveis.
+  </p>
+  <p class="link">
+    https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-21/spotify_songs.csv
+  </p>
+
+  <h2>3. Link da solução</h2>
+  <p>Repositório público com código-fonte, README.md, RELATORIO.md e testes automatizados:</p>
+  <p class="link">
+    https://github.com/Zackzinzz07/laboratorio-estatistico.
+  </p>
+
+  <h2>4. Link do vídeo de demonstração</h2>
+  <div class="gap">
+    <strong>PREENCHER ANTES DE ENVIAR.</strong> Cole aqui a URL do vídeo
+    (YouTube não listado ou Google Drive com acesso liberado) e teste o link
+    em uma janela anônima.
+  </div>
+
+  <div class="foot">
+    Documento de submissão · SISTEMATIZACAO_MEC_DataBeatsAnalytics.pdf
+  </div>
+
+</section>
+
+<!-- ===================== PÁGINA 2 ===================== -->
+<section class="page">
+
+  <h1 style="font-size:14pt;">5. Resumo Executivo</h1>
+
+  <h2>Dataset escolhido</h2>
+  <p>
+    O <strong>Spotify Songs Dataset</strong> reúne <span class="num">32.833</span> faixas musicais com
+    atributos sonoros medidos pela própria API do Spotify. A escolha se justifica por três motivos:
+    o volume supera em mais de 32 vezes o mínimo de 1.000 registros exigido, garantindo validade
+    assintótica às simulações da Lei dos Grandes Números e do Teorema Central do Limite; o conjunto
+    oferece <span class="num">9</span> variáveis numéricas (<em>danceability, energy, loudness, valence,
+    tempo, duration_s, track_popularity, acousticness, speechiness</em>) e <span class="num">3</span>
+    categóricas (<em>playlist_genre</em> com 6 classes, <em>playlist_subgenre</em> com 24 e
+    <em>mode</em>); e apresenta formas distribucionais variadas — de aproximadamente normais
+    (<em>tempo</em>) a fortemente assimétricas com cauda longa (<em>duration_s</em>) —, o que permite
+    exercitar toda a teoria de probabilidade e regressão em dados reais.
+  </p>
+
+  <h2>Módulos implementados</h2>
+  <ul>
+    <li><strong>Módulo 0 — Dados reais:</strong> carga, dicionário de variáveis e metadados das 32.833 faixas.</li>
+    <li><strong>Módulo 1 — Núcleo estatístico próprio:</strong> <code>minhastats.py</code> com 17 funções
+        implementadas do zero usando apenas <code>math</code> e tipos nativos — média, mediana, moda,
+        amplitude, variância e desvio padrão (amostral e populacional), percentis, quartis, coeficiente
+        de variação, covariância, correlação de Pearson, regressão por mínimos quadrados, outliers por
+        IQR, tabela de frequências por Sturges e assimetria de Pearson. Validado por
+        <span class="num">27</span> testes em pytest contra NumPy, SciPy e <code>statistics</code>
+        (tolerância <span class="num">rtol = 1e-7</span>, <span class="num">atol = 1e-9</span>).</li>
+    <li><strong>Módulo 2 — Descritiva interativa:</strong> tabela de frequências por classes, medidas de
+        centro e dispersão, histograma, boxplot, detecção de outliers pela regra de Tukey (1,5·IQR) e
+        interpretação textual automática de assimetria.</li>
+    <li><strong>Módulo 3 — Monte Carlo:</strong> Lei dos Grandes Números (até 10.000 ensaios, com
+        trajetórias simultâneas) e Teorema Central do Limite sobre <em>duration_s</em>, com controle
+        do número de repetições e do tamanho da amostra.</li>
+    <li><strong>Módulo 4 — Distribuições teóricas:</strong> sobreposição de curvas Normal, Exponencial e
+        Uniforme com parâmetros estimados dos dados, mais gráfico Q-Q para discussão da aderência.</li>
+    <li><strong>Módulo 5 — Correlação e regressão:</strong> dispersão, reta OLS calculada pelo núcleo
+        próprio, equação, R², erro padrão da estimativa, predição interativa e alerta sobre causalidade.</li>
+    <li><strong>Módulo 6 — Descobertas:</strong> as três sínteses apresentadas a seguir.</li>
+  </ul>
+
+  <h2>As 3 principais descobertas</h2>
+
+  <div class="finding">
+    <h3>1. A "Loudness War" é mensurável nos dados</h3>
+    <p>
+      Volume (<em>loudness</em>) e energia percebida (<em>energy</em>) apresentam correlação de Pearson
+      de <span class="num">r = +0,6774</span> (<span class="num">R² = 45,88%</span>). A mediana de volume
+      é de <span class="num">−6,17 dB</span> com assimetria negativa (<span class="num">As = −0,31</span>):
+      mais de 75% das faixas são masterizadas num intervalo comprimido entre −9 dB e −4 dB. O padrão é
+      consistente com a prática da indústria fonográfica de comprimir dinamicamente as mixagens para
+      transmitir sensação imediata de impacto. <em>Limite:</em> associação, não causalidade — o gênero
+      musical atua como possível variável de confundimento.
+    </p>
+  </div>
+
+  <div class="finding">
+    <h3>2. A duração das músicas convergiu para a janela do streaming</h3>
+    <p>
+      A média de duração é de <span class="num">225,8 s</span> contra mediana de
+      <span class="num">216,0 s</span>, com assimetria positiva (<span class="num">As = +0,49</span>).
+      A regra do IQR identificou <span class="num">1.637</span> faixas atípicas
+      (<span class="num">4,99%</span>), <strong>todas</strong> na cauda superior (acima de 325,1 s) —
+      nenhuma na cauda inferior. O acervo está concentrado entre 3 e 3,5 minutos, faixa compatível com
+      o modelo de remuneração por <em>stream</em> monetizável a partir de 30 segundos; os outliers são
+      remixes estendidos e rock progressivo.
+    </p>
+  </div>
+
+  <div class="finding">
+    <h3>3. A popularidade esconde uma bimodalidade ("catálogo morto")</h3>
+    <p>
+      <span class="num">2.703</span> músicas (<span class="num">8,23%</span> da base) têm popularidade
+      exatamente igual a zero, formando um pico isolado à esquerda do histograma. Ao remover esse grupo,
+      a distribuição das faixas ativas se torna praticamente unimodal e simétrica (média
+      <span class="num">46,2</span>, mediana <span class="num">47,0</span>). Isso evidencia a estrutura
+      de cauda longa das plataformas digitais e mostra que aplicar uma regressão linear ingênua sobre a
+      popularidade contamina os resíduos — o caso pediria um modelo do tipo <em>hurdle</em> ou
+      <em>zero-inflated</em>.
+    </p>
+  </div>
+
+  <div class="foot">
+    Isac Salatiel — Matrícula 72650219 · DataBeats Analytics · Sistematização MEC
+  </div>
+
+</section>
+
+</body>
+</html>
