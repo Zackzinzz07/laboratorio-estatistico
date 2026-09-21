@@ -8,12 +8,9 @@
 ## 👥 Identificação da Equipe
 
 - **Nome do Grupo:** *DataBeats Analytics*
-- **Componentes:**
-  1. `[Nome Completo do Aluno 1]` — Matrícula: `[000000001]`
-  2. `[Nome Completo do Aluno 2]` — Matrícula: `[000000002]`
-  3. `[Nome Completo do Aluno 3]` — Matrícula: `[000000003]`
-  4. `[Nome Completo do Aluno 4]` — Matrícula: `[000000004]` *(opcional)*
-  5. `[Nome Completo do Aluno 5]` — Matrícula: `[000000005]` *(opcional)*
+- **Modalidade:** Entrega individual
+- **Componente:**
+  1. `Isac Salatiel` — Matrícula: `72650219` — Análise e Desenvolvimento de Sistemas (EAD, Campus Virtual, 2º semestre/2026)
 
 ---
 
@@ -58,7 +55,7 @@ laboratorio-estatistico/
 ├── RELATORIO.md                   # Relatório acadêmico completo com fórmulas em LaTeX e descobertas
 ├── ROTEIRO_VIDEO.md               # Roteiro passo a passo para gravação do vídeo de 3 a 5 min
 ├── generate_pdf.py                # Script de geração do PDF formal de submissão
-├── SISTEMATIZACAO_MEC_NomeDoGrupo.pdf # Documento PDF oficial para entrega no AVA
+├── SISTEMATIZACAO_MEC_DataBeatsAnalytics.pdf # Documento PDF oficial para entrega no AVA
 │
 ├── data/
 │   └── spotify_songs.csv          # Base de dados real completa (32.833 linhas)
@@ -78,7 +75,7 @@ laboratorio-estatistico/
 
 ### 1. Clonar o Repositório
 ```bash
-git clone https://github.com/seu-usuario/laboratorio-estatistico.git
+git clone https://github.com/Zackzinzz07/laboratorio-estatistico..git
 cd laboratorio-estatistico
 ```
 

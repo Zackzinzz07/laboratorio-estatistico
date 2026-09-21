@@ -2,12 +2,9 @@
 **Disciplina:** Matemática e Estatística para Computação  
 **Docente:** Prof. Romes  
 **Equipe / Nome do Grupo:** *DataBeats Analytics*  
-**Integrantes:**
-- [Nome do Aluno 1] — Matrícula: [000000001]
-- [Nome do Aluno 2] — Matrícula: [000000002]
-- [Nome do Aluno 3] — Matrícula: [000000003]
-- [Nome do Aluno 4] — Matrícula: [000000004] (opcional)
-- [Nome do Aluno 5] — Matrícula: [000000005] (opcional)
+**Modalidade:** Entrega individual  
+**Integrante:**
+- Isac Salatiel — Matrícula: 72650219 — Análise e Desenvolvimento de Sistemas (EAD, Campus Virtual, 2º semestre/2026)
 
 ---
 
